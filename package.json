@@ -1,6 +1,6 @@
 {
   "name": "truck-hours-offline",
-  "version": "1.2.0",
+  "version": "0.10.64",
   "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",

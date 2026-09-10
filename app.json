@@ -18,7 +18,7 @@
       "blockedPermissions": [
         "android.permission.INTERNET"
       ],
-      "versionCode": 3
+      "versionCode": 4
     },
     "extra": {
       "offlineOnly": true
@@ -42,7 +42,7 @@
     },
     "name": "Truck Hours Offline",
     "slug": "truck-hours-offline",
-    "version": "1.2.0",
+    "version": "0.10.64",
     "scheme": "truck-hours-offline",
     "orientation": "portrait",
     "userInterfaceStyle": "dark",
