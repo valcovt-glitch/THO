@@ -77,10 +77,10 @@ export default function Settings() {
         </View>
 
         <View style={styles.card}>
-          <Text style={styles.rowTitle}>Offline režim</Text>
+          <Text style={styles.rowTitle}>Dáta a aktualizácie</Text>
           <Text style={styles.rowDesc}>
-            Všetky zmeny, prestávky, história a nastavenia sa ukladajú iba v tomto telefóne.
-            Aplikácia nepotrebuje server ani internetové pripojenie.
+            Všetky zmeny, prestávky, história a nastavenia zostávajú iba v tomto telefóne.
+            Pri otvorení aplikácia kontroluje novú verziu na GitHube; aktualizáciu potom potvrdíš v Androide.
           </Text>
         </View>
 
