@@ -1,0 +1,77 @@
+{
+  "expo": {
+    "icon": "./assets/icon.png",
+    "android": {
+      "package": "sk.valcovt.truckhoursoffline",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#0B1220"
+      },
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION",
+        "FOREGROUND_SERVICE",
+        "FOREGROUND_SERVICE_LOCATION"
+      ],
+      "blockedPermissions": [
+        "android.permission.INTERNET"
+      ],
+      "versionCode": 3
+    },
+    "extra": {
+      "offlineOnly": true
+    },
+    "ios": {
+      "bundleIdentifier": "sk.valcovt.truckhoursoffline",
+      "supportsTablet": true,
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "location",
+          "fetch"
+        ],
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "Appka potrebuje polohu na pozadí, aby automaticky rozpoznala jazdu a prestávky.",
+        "NSLocationWhenInUseUsageDescription": "Appka potrebuje polohu na sledovanie jazdy a prestávok."
+      }
+    },
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#0B1220"
+    },
+    "name": "Truck Hours Offline",
+    "slug": "truck-hours-offline",
+    "version": "1.2.0",
+    "scheme": "truck-hours-offline",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Appka potrebuje polohu na pozadí, aby automaticky rozpoznala jazdu a prestávky.",
+          "isAndroidBackgroundLocationEnabled": true,
+          "isAndroidForegroundServiceEnabled": true
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon.png",
+          "color": "#FF7A1A"
+        }
+      ]
+    ],
+    "updates": {
+      "enabled": false
+    }
+  }
+}
