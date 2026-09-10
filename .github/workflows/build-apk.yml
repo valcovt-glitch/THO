@@ -5,9 +5,6 @@ on:
   push:
     branches: [main]
 
-permissions:
-  contents: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -46,18 +43,6 @@ jobs:
 
       - name: Rename APK
         run: cp android/app/build/outputs/apk/release/app-release.apk TruckHoursOffline.apk
-
-      - name: Read app version
-        id: version
-        run: echo "value=$(node -p \"require('./app.json').expo.version\")" >> "$GITHUB_OUTPUT"
-
-      - name: Publish installable release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ steps.version.outputs.value }}
-          name: Truck Hours ${{ steps.version.outputs.value }}
-          files: TruckHoursOffline.apk
-          generate_release_notes: true
 
       - name: Upload APK
         uses: actions/upload-artifact@v4

@@ -13,14 +13,15 @@
         "ACCESS_FINE_LOCATION",
         "ACCESS_BACKGROUND_LOCATION",
         "FOREGROUND_SERVICE",
-        "FOREGROUND_SERVICE_LOCATION",
-        "REQUEST_INSTALL_PACKAGES"
+        "FOREGROUND_SERVICE_LOCATION"
+      ],
+      "blockedPermissions": [
+        "android.permission.INTERNET"
       ],
       "versionCode": 4
     },
     "extra": {
-      "offlineOnly": false,
-      "updateRepository": "valcovt-glitch/THO"
+      "offlineOnly": true
     },
     "ios": {
       "bundleIdentifier": "sk.valcovt.truckhoursoffline",
