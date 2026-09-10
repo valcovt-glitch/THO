@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { Stack } from "expo-router";
+import { Alert } from "react-native";
+import Constants from "expo-constants";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
@@ -17,6 +19,7 @@ import {
 } from "../lib/location-task";
 import { requestNotificationPermissions } from "../lib/notifications";
 import { hydrateDayPhase } from "../lib/day-phase";
+import { downloadAndInstallAppUpdate, findAppUpdate } from "../lib/app-update";
 
 const queryClient = new QueryClient();
 
@@ -49,6 +52,38 @@ export default function RootLayout() {
       }
     })();
     return () => stopForeground?.();
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    const currentVersion = Constants.expoConfig?.version ?? "0.0.0";
+
+    findAppUpdate(currentVersion)
+      .then((update) => {
+        if (!update || cancelled) return;
+        Alert.alert(
+          "K dispozícii je aktualizácia",
+          `Truck Hours ${update.version} je pripravený na stiahnutie.`,
+          [
+            { text: "Neskôr", style: "cancel" },
+            {
+              text: "Aktualizovať",
+              onPress: () => {
+                downloadAndInstallAppUpdate(update).catch((error) => {
+                  Alert.alert("Aktualizácia sa nepodarila", error instanceof Error ? error.message : "Skús to znova neskôr.");
+                });
+              },
+            },
+          ],
+        );
+      })
+      .catch(() => {
+        // The app remains fully usable when offline or when GitHub is unavailable.
+      });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   if (!fontsLoaded) return null;
